@@ -2,6 +2,7 @@
 import streamlit as st
 from sklearn.decomposition import PCA
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, f1_score, classification_report
+import xgboost
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
