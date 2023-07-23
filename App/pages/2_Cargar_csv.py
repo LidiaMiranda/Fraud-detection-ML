@@ -9,20 +9,28 @@ import os
 import pickle
 import base64
 import io
-import requests
+import urllib.request as urllib
 
 #Especificaciones del archivo (tamaño máximo)
 max_size = 500 * 1024 * 1024  # 500 MB en bytes
 
+ruta_csv = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/data%20processed/df_red70_train_pca3.csv'
+ruta_modelo = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/my_model.pkl'
+ruta_pca = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/pca_5.pkl'
+ruta_scaler = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/scaler.pkl'
 
 # Csv train ya procesado
-df_train = pd.read_csv('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/App/df_red70_train_pca3.csv')
+response_csv = urllib.urlopen(ruta_csv)
+df = pd.read_csv(response_csv)
+# df_train = pd.read_csv('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/App/df_red70_train_pca3.csv')
 # Dividimos en X e y
 X_train = df_train.drop(columns=['isfraud'])
 y_train = df_train['isfraud']
 
-# Cargar el modelo (es de ejemplo)
-model = pickle.load(open('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/my_model.pkl', 'rb'))
+# Cargar el modelo
+response_modelo = urllib.urlopen(ruta_modelo)
+model = pickle.load(response_modelo)
+# model = pickle.load(open('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/my_model.pkl', 'rb'))
 
 #Icono de la pestaña
 st.set_page_config(page_title="Cargar CSV", page_icon="	:outbox_tray:")
@@ -51,17 +59,22 @@ if uploaded_file is not None:
         # dividimos en X e y
         X_test = test.drop(columns=['isfraud'])
         y_test = test['isfraud']
-        # importamos ruta de nuestro preprocesado guardado
-        ruta_pca = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/pca_5.pkl'
-        ruta_scaler = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/scaler.pkl'
+        # # importamos ruta de nuestro preprocesado guardado
+        # ruta_pca = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/pca_5.pkl'
+        # ruta_scaler = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/scaler.pkl'
 
         try:
             # Escalamos
-            scaler = pickle.load(open(ruta_scaler, 'rb'))
+            response_scaler = urllib.urlopen(ruta_scaler)
+            scaler = pickle.load(response_scaler)
+            # scaler = pickle.load(open(ruta_scaler, 'rb'))
             scaled_X_test = scaler.transform(X_test)
 
             # PCA
-            pca = PCA(n_components=5)
+            # Descargar el PCA desde GitHub
+            response_pca = urllib.urlopen(ruta_pca)
+            pca = pickle.load(response_pca)
+            # pca = PCA(n_components=5)
             X_test_pca = pca.fit_transform(scaled_X_test)
             X_test_pca = pd.DataFrame(pca.transform(scaled_X_test), columns=['PC1', 'PC2', 'PC3', 'PC4', 'PC5'])
 
