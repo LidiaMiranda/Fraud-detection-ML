@@ -14,7 +14,7 @@ import urllib.request as urllib
 #Especificaciones del archivo (tamaño máximo)
 max_size = 500 * 1024 * 1024  # 500 MB en bytes
 
-ruta_csv = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/data%20processed/df_red70_train_pca3.csv'
+ruta_csv = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/App/df_red70_train_pca3.csv'
 ruta_modelo = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/my_model.pkl'
 ruta_pca = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/pca_5.pkl'
 ruta_scaler = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/scaler.pkl'
