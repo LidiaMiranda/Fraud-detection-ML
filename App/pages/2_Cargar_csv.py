@@ -16,7 +16,7 @@ max_size = 500 * 1024 * 1024  # 500 MB en bytes
 
 
 # Csv train ya procesado
-df_train = pd.read_csv('C:\Users\lydia\OneDrive\Documentos\GitHub\Fraud-detection-ML\data processed\df_red70_train_pca3.csv')
+df_train = pd.read_csv('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/App/df_red70_train_pca3.csv')
 # Dividimos en X e y
 X_train = df_train.drop(columns=['isfraud'])
 y_train = df_train['isfraud']
