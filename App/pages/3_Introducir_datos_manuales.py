@@ -1,6 +1,9 @@
 import streamlit as st
-from utils.utilsML import *
-
+import pandas as pd
+import numpy as np
+from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, f1_score, classification_report
+import pickle
+import requests
 
 st.set_page_config(page_title="Introducir datos manuales", page_icon=":pencil:")
 
