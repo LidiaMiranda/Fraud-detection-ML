@@ -60,8 +60,8 @@ if submitted:
 
     # 2. Realizar transformaciones de los datos
     # Cargamos el PCA y el scaler
-    ruta_pca = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud_detection_ML/src/App/pca_5.pkl'
-    ruta_scaler = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud_detection_ML/src/App/scaler.pkl'
+    ruta_pca = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/pca_5.pkl'
+    ruta_scaler = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/scaler.pkl'
 
     # Escalamos
     scaler = pickle.load(open(ruta_scaler, 'rb'))

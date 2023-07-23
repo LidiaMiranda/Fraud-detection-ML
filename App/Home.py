@@ -10,14 +10,14 @@ st.set_page_config(page_title="Home", page_icon=":house_with_garden:")
 max_size = 500 * 1024 * 1024  # 500 MB en bytes
 
 # Csv train ya procesado (PCA=5, Scaler)
-df_train = pd.read_csv('C:/Users/lydia/OneDrive/Escritorio/Proyecto final_fraude/src/data/processed/df_red70_train_pca3.csv')
+df_train = pd.read_csv('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/data processed/df_red70_train_pca3.csv')
 # Dividimos en X e y
 X_train = df_train.drop(columns=['isfraud'])
 y_train = df_train['isfraud']
 
 #Cargamos modelo, pca y scaler
 
-with open('C:/Users/lydia/OneDrive/Escritorio/Proyecto final_fraude/src/modelos/my_model.pkl', 'rb') as file:
+with open('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/my_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 
