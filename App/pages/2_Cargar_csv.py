@@ -1,13 +1,6 @@
-
-import streamlit as st
-from sklearn.decomposition import PCA
-from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, f1_score, classification_report
-import xgboost
-import plotly.graph_objects as go
-import pandas as pd
-import numpy as np
+from utils.utilsML import *
 import os
-import pickle
+import streamlit as st
 import base64
 import io
 import urllib.request as urllib

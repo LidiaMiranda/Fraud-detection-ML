@@ -30,7 +30,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
-import xgboost
+import xgboost 
 #Métricas, 
 from sklearn.metrics import confusion_matrix, classification_report, f1_score, recall_score, accuracy_score,precision_score
 #Guardar modelos

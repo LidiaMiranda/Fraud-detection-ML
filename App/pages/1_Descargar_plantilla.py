@@ -1,9 +1,6 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
-import base64
-import io
-import requests
+from utils.utilsML import *
+
 
 st.set_page_config(page_title="Descargar plantilla", page_icon=":inbox_tray:")
 
