@@ -16,13 +16,13 @@ max_size = 500 * 1024 * 1024  # 500 MB en bytes
 
 
 # Csv train ya procesado
-df_train = pd.read_csv('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/data processed/df_red70_train_pca3.csv')
+df_train = pd.read_csv('Fraud-detection-ML/data processed/df_red70_train_pca3.csv')
 # Dividimos en X e y
 X_train = df_train.drop(columns=['isfraud'])
 y_train = df_train['isfraud']
 
 # Cargar el modelo (es de ejemplo)
-model = pickle.load(open('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/my_model.pkl', 'rb'))
+model = pickle.load(open('Fraud-detection-ML/modelos/my_model.pkl', 'rb'))
 
 #Icono de la pestaña
 st.set_page_config(page_title="Cargar CSV", page_icon="	:outbox_tray:")
@@ -52,8 +52,8 @@ if uploaded_file is not None:
         X_test = test.drop(columns=['isfraud'])
         y_test = test['isfraud']
         # importamos ruta de nuestro preprocesado guardado
-        ruta_pca = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/pca_5.pkl'
-        ruta_scaler = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/scaler.pkl'
+        ruta_pca = 'Fraud-detection-ML/modelos/pca_5.pkl'
+        ruta_scaler = 'Fraud-detection-ML/modelos/scaler.pkl'
 
         try:
             # Escalamos
