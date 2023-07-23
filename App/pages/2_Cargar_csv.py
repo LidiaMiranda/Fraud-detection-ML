@@ -14,10 +14,10 @@ import urllib.request as urllib
 #Especificaciones del archivo (tamaño máximo)
 max_size = 500 * 1024 * 1024  # 500 MB en bytes
 
-ruta_csv = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/App/df_red70_train_pca3.csv'
-ruta_modelo = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/my_model.pkl'
-ruta_pca = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/pca_5.pkl'
-ruta_scaler = 'https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/modelos/scaler.pkl'
+ruta_csv = 'https://github.com/LidiaMiranda/Fraud-detection-ML/blob/b16da7af6ca9dad9b5d456c0b6582c047c97cd13/App/df_red70_train_pca3.csv'
+ruta_modelo = 'https://github.com/LidiaMiranda/Fraud-detection-ML/blob/b16da7af6ca9dad9b5d456c0b6582c047c97cd13/App/my_model.pkl'
+ruta_pca = 'https://github.com/LidiaMiranda/Fraud-detection-ML/blob/b16da7af6ca9dad9b5d456c0b6582c047c97cd13/App/pca_5.pkl'
+ruta_scaler = 'https://github.com/LidiaMiranda/Fraud-detection-ML/blob/b16da7af6ca9dad9b5d456c0b6582c047c97cd13/App/scaler.pkl'
 
 # Csv train ya procesado
 response_csv = urllib.urlopen(ruta_csv)
