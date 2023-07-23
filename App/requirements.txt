@@ -5,3 +5,4 @@ streamlit
 plotly.express
 scikit-learn
 imblearn
+xgboost
