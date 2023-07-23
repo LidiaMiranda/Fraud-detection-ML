@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, f1_score, classification_report
 import pickle
+import requests
 
 st.set_page_config(page_title="Introducir datos manuales", page_icon=":pencil:")
 
@@ -60,22 +61,46 @@ if submitted:
 
     # 2. Realizar transformaciones de los datos
     # Cargamos el PCA y el scaler
-    ruta_pca = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/pca_5.pkl'
-    ruta_scaler = 'C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/scaler.pkl'
+    pca_url = 'https://github.com/LidiaMiranda/Fraud-detection-ML/raw/main/modelos/pca_5.pkl'
+    scaler_url = 'https://github.com/LidiaMiranda/Fraud-detection-ML/raw/main/modelos/scaler.pkl'
 
     # Escalamos
-    scaler = pickle.load(open(ruta_scaler, 'rb'))
+    # Descargar el archivo scaler usando requests
+    response_scaler = requests.get(scaler_url)
+    # Guardar el contenido descargado en un archivo local
+    with open('scaler.pkl', 'wb') as file:
+        file.write(response_scaler.content)
+    with open('scaler.pkl', 'rb') as file:
+        scaler = pickle.load(file)
+
     scaled_X_test = scaler.transform(X_test)
 
     # PCA
-    pca = pickle.load(open(ruta_pca, 'rb'))
+    # Descargar el archivo pca usando requests
+    response_pca = requests.get(pca_url)
+    # Guardar el contenido descargado en un archivo local
+    with open('pca_5.pkl', 'wb') as file:
+        file.write(response_pca.content)
+    # Cargar el archivo pca desde el archivo local
+    with open('pca_5.pkl', 'rb') as file:
+        pca = pickle.load(file)
+
     X_test_pca = pd.DataFrame(pca.transform(scaled_X_test), columns=['PC1', 'PC2', 'PC3', 'PC4', 'PC5'])
 
-    # 3. Cargar el modelo y otros objetos relacionados
-    my_model = pickle.load(open('C:/Users/lydia/OneDrive/Escritorio/Proyecto final_fraude/src/modelos/my_model.pkl', 'rb'))
+    # Descarga el contenido del archivo del modelo desde GitHub
+    model_url = "https://github.com/LidiaMiranda/Fraud-detection-ML/raw/main/modelos/my_model.pkl"
+    response = requests.get(model_url)
+
+    # Verifica que la descarga haya sido exitosa
+    if response.status_code == 200:
+        # Carga el modelo desde el contenido descargado
+        model = pickle.loads(response.content)
+    else:
+        # Si no se pudo descargar el modelo, muestra un mensaje de error
+        raise Exception("No se pudo descargar el modelo desde GitHub.")
 
     # 4. Realizar predicción utilizando el modelo y los datos transformados
-    y_pred = my_model.predict(X_test_pca)
+    y_pred = model.predict(X_test_pca)
 
     # Imprimir la predicción
     st.write("Predicción:")

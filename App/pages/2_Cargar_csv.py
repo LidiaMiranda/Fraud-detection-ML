@@ -9,18 +9,33 @@ import os
 import pickle
 import base64
 import io
+import requests
 
 #Especificaciones del archivo (tamaño máximo)
 max_size = 500 * 1024 * 1024  # 500 MB en bytes
 
+# URL del archivo en GitHub
+file_url = "https://raw.githubusercontent.com/LidiaMiranda/Fraud-detection-ML/main/data%20processed/df_red70_train_pca3.csv"
+
 # Csv train ya procesado
-df_train = pd.read_csv('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/data processed/df_red70_train_pca3.csv')
+df_train = pd.read_csv(file_url)
 # Dividimos en X e y
 X_train = df_train.drop(columns=['isfraud'])
 y_train = df_train['isfraud']
 
-# Cargar el modelo (es de ejemplo)
-model = pickle.load(open('C:/Users/lydia/OneDrive/Documentos/GitHub/Fraud-detection-ML/modelos/my_model.pkl', 'rb'))
+# URL del archivo del modelo en GitHub
+model_url = "https://github.com/LidiaMiranda/Fraud-detection-ML/raw/main/modelos/my_model.pkl"
+
+# Descarga el contenido del archivo del modelo desde GitHub
+response = requests.get(model_url)
+
+# Verifica que la descarga haya sido exitosa
+if response.status_code == 200:
+    # Carga el modelo desde el contenido descargado
+    model = pickle.loads(response.content)
+else:
+    # Si no se pudo descargar el modelo, muestra un mensaje de error
+    raise Exception("No se pudo descargar el modelo desde GitHub.")
 
 #Icono de la pestaña
 st.set_page_config(page_title="Cargar CSV", page_icon="	:outbox_tray:")
