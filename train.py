@@ -3,7 +3,7 @@ from utils.utilsML import *
 
 
 #Cargamos dataset después de la limpieza inicial
-df = pd.read_csv("C:/Users/lydia/OneDrive/Escritorio/Proyecto final_fraude/src/data/processed/training_df.csv")
+df = pd.read_csv("src/data/processed/training_df.csv")
 
 
 #-------Escalado manual-------
@@ -34,8 +34,8 @@ X_train, X_val,y_train, y_val = train_test_split(X,y,random_state=42,test_size=0
 #-----Transformaciones----
 
 #Importamos Scaler y PCA
-ruta_scaler = 'C:/Users/lydia/OneDrive/Escritorio/Proyecto final_fraude/src/modelos/scaler.pkl'
-ruta_pca = 'C:/Users/lydia/OneDrive/Escritorio/Proyecto final_fraude/src/modelos/pca_5.pkl'
+ruta_scaler = 'src/modelos/scaler.pkl'
+ruta_pca = 'src/modelos/pca_5.pkl'
 
 #Escalamos datos
 scaler = pickle.load(open(ruta_scaler, 'rb'))
