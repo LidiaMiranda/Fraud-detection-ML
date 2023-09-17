@@ -57,4 +57,4 @@ A continuación se resumirá brevemente el contenido de las columnas:
 
 Este proyecto tiene asociado una app hecha con Streamlit. Toda la información sobre el código se encuentra en la carpeta App. 
 
-[https://fraud-detection-ml.streamlit.app/](https://fraud-detection-ml.streamlit.app/)https://fraud-detection-ml.streamlit.app/
+[https://fraud-detection-ml.streamlit.app/](https://fraud-detection-ml.streamlit.app/)
